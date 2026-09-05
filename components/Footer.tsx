@@ -11,7 +11,7 @@ export function Footer() {
           © {year} {site.name}. All rights reserved.
         </p>
         <div
-          className="flex items-center gap-6 text-xs font-medium uppercase tracking-wide"
+          className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium uppercase tracking-wide sm:gap-x-6"
           style={{ color: "var(--muted)" }}
         >
           {socials.map((s) => (

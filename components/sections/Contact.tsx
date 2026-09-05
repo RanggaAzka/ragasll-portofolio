@@ -118,7 +118,7 @@ export function Contact() {
                   data-cursor-hover
                   className="surface-card group flex items-center justify-between gap-4 p-5 hover:bg-[var(--card-hover)]"
                 >
-                  <div className="flex min-w-0 items-center gap-4">
+                  <div className="flex min-w-0 items-center gap-3 sm:gap-4">
                     <span
                       className="grid h-11 w-11 shrink-0 place-items-center rounded-xl"
                       style={{ background: "var(--accent-dim)" }}
@@ -127,14 +127,14 @@ export function Contact() {
                     </span>
                     <div className="min-w-0">
                       <p className="eyebrow mb-1">{s.label}</p>
-                      <p className="truncate text-sm font-semibold sm:text-base">
+                      <p className="break-all text-sm font-semibold sm:text-base">
                         {s.value}
                       </p>
                     </div>
                   </div>
                   <div className="flex shrink-0 items-center gap-3">
                     <span
-                      className="font-feature-tabular text-xs"
+                      className="font-feature-tabular hidden text-xs sm:inline"
                       style={{ color: "var(--muted-soft)" }}
                     >
                       {String(i + 1).padStart(2, "0")}

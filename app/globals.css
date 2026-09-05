@@ -140,6 +140,8 @@ html.lenis body {
 html {
   scroll-behavior: auto;
   -webkit-tap-highlight-color: transparent;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -147,7 +149,12 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: clip;
+  overscroll-behavior-x: none;
   transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+main {
+  overflow-x: clip;
 }
 
 ::selection {

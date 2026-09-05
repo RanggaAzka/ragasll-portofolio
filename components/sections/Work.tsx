@@ -127,7 +127,7 @@ export function Work() {
           </Link>
         </div>
 
-        <div className="gallery-fade-mask relative mt-8 h-[170px] sm:mt-14 sm:h-[300px] lg:h-[400px]">
+        <div className="gallery-fade-mask relative mt-8 h-[170px] overflow-hidden sm:mt-14 sm:h-[300px] lg:h-[400px]">
           {projects.map((project, i) => {
             const abs = Math.abs(i - active);
             const isActive = i === active;

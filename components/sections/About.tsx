@@ -139,12 +139,14 @@ export function About() {
             </div>
 
             <div
-              className="grid grid-cols-3 gap-4 border-y py-6"
+              className="grid grid-cols-3 gap-3 border-y py-6 sm:gap-4"
               style={{ borderColor: "var(--border)" }}
             >
               {stats.map((s) => (
                 <div key={s.label}>
-                  <p className="eyebrow mb-2 whitespace-nowrap">{s.label}</p>
+                  <p className="mb-2 text-[10px] font-semibold uppercase tracking-wider sm:text-[11px]">
+                    {s.label}
+                  </p>
                   <p className="font-feature-tabular text-2xl font-extrabold sm:text-3xl">
                     {s.value}
                   </p>

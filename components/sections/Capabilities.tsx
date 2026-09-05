@@ -90,7 +90,7 @@ export function Capabilities() {
               <span
                 key={tech}
                 data-reveal="tech-chip"
-                className="surface-card flex items-center justify-center px-3 py-3.5 text-center text-[11px] font-semibold uppercase tracking-wide transition-colors hover:bg-[var(--card-hover)]"
+                className="surface-card flex items-center justify-center px-2 py-3 text-center text-[10px] font-semibold uppercase tracking-wide transition-colors hover:bg-[var(--card-hover)] sm:px-3 sm:text-[11px]"
               >
                 {tech}
               </span>

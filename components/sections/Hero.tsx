@@ -99,7 +99,7 @@ export function Hero() {
     <section
       ref={sectionRef}
       id="top"
-      className="relative flex h-[100svh] min-h-[640px] flex-col overflow-hidden"
+      className="relative flex min-h-[100svh] flex-col overflow-hidden"
     >
       <div
         ref={parallaxRef}

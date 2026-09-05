@@ -68,7 +68,7 @@ export function Contact() {
 
         <div className="grid gap-16 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
           <div>
-            <h2 className="flex flex-col text-[clamp(2.75rem,13vw,8.75rem)] font-extrabold uppercase leading-[0.92] tracking-tight">
+            <h2 className="flex flex-col text-[clamp(2.5rem,11vw,8.75rem)] font-extrabold uppercase leading-[0.92] tracking-tight">
               {HEADLINE_WORDS.map((word) => (
                 <span key={word} className="overflow-hidden py-1">
                   <span data-contact-line className="inline-block">

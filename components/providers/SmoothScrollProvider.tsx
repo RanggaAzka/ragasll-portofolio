@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 
 type SmoothScrollContextValue = {
@@ -23,16 +24,26 @@ const SmoothScrollContext = createContext<SmoothScrollContextValue>({
   },
 });
 
+/** Native fallback used when Lenis isn't running (touch/reduced-motion):
+ *  scrolls via window with the provided navbar offset applied. */
+function nativeScrollTo(target: string | HTMLElement, offset: number) {
+  const el = typeof target === "string" ? document.querySelector(target) : target;
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY + offset;
+  window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+}
+
 export function useSmoothScroll() {
   return useContext(SmoothScrollContext);
 }
 
 export function SmoothScrollProvider({ children }: { children: ReactNode }) {
   const reducedMotion = useReducedMotion();
+  const isTouch = useMediaQuery("(pointer: coarse)");
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    if (reducedMotion) {
+    if (reducedMotion || isTouch) {
       return;
     }
 
@@ -57,15 +68,14 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
       lenis.destroy();
       lenisRef.current = null;
     };
-  }, [reducedMotion]);
+  }, [reducedMotion, isTouch]);
 
   const scrollTo: SmoothScrollContextValue["scrollTo"] = (target, offset = 0) => {
     if (lenisRef.current) {
       lenisRef.current.scrollTo(target, { offset, duration: 1.3 });
       return;
     }
-    const el = typeof target === "string" ? document.querySelector(target) : target;
-    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    nativeScrollTo(target, offset);
   };
 
   return (

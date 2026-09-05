@@ -127,7 +127,7 @@ export function Work() {
           </Link>
         </div>
 
-        <div className="gallery-fade-mask relative mt-14 h-[200px] sm:h-[300px] lg:h-[400px]">
+        <div className="gallery-fade-mask relative mt-8 h-[170px] sm:mt-14 sm:h-[300px] lg:h-[400px]">
           {projects.map((project, i) => {
             const abs = Math.abs(i - active);
             const isActive = i === active;
@@ -176,7 +176,7 @@ export function Work() {
           })}
         </div>
 
-        <div className="mt-6 flex items-center justify-center gap-4">
+        <div className="mt-4 flex items-center justify-center gap-4 sm:mt-6">
           <button
             type="button"
             onClick={() => advance(-1)}
@@ -205,7 +205,7 @@ export function Work() {
           </button>
         </div>
 
-        <div ref={detailRef} className="mx-auto mt-10 max-w-2xl text-center">
+        <div ref={detailRef} className="mx-auto mt-8 max-w-2xl text-center sm:mt-10">
           <h3 className="text-xl font-bold sm:text-2xl">{activeProject.title}</h3>
           <p
             className="mt-3 text-sm sm:text-base"

@@ -67,7 +67,7 @@ export function Milestones() {
           </p>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-8 sm:mt-12">
           {milestones.map((item, i) => {
             const Icon = ICONS[item.icon];
             const hasLink = item.href && item.href !== "#";

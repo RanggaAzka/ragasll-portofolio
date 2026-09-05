@@ -16,9 +16,9 @@ export default function WorkArchivePage() {
   return (
     <>
       <Navbar />
-      <main className="relative min-h-screen pt-32 sm:pt-36">
+      <main className="relative min-h-screen pt-24 sm:pt-36">
         <BackgroundLines />
-        <div className="container-page relative z-10 pb-28">
+        <div className="container-page relative z-10 pb-20 sm:pb-28">
           <Link
             href="/#work"
             data-cursor-hover
@@ -40,7 +40,7 @@ export default function WorkArchivePage() {
             work I&apos;ve built.
           </p>
 
-          <div className="mt-14">
+          <div className="mt-10 sm:mt-14">
             {projects.map((project) => (
               <div
                 key={project.number}

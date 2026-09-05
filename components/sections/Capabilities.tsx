@@ -70,7 +70,7 @@ export function Capabilities() {
       className="relative section-padding"
     >
       <BackgroundLines />
-      <div className="container-page relative z-10 grid gap-14 lg:grid-cols-[0.9fr_1.3fr] lg:gap-16">
+      <div className="container-page relative z-10 grid gap-10 lg:grid-cols-[0.9fr_1.3fr] lg:gap-16">
         <div data-reveal="capabilities-header">
           <p className="eyebrow mb-3">My Capabilities</p>
           <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
@@ -85,7 +85,7 @@ export function Capabilities() {
             workflows.
           </p>
 
-          <div className="mt-10 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-3 gap-3 sm:mt-10 sm:grid-cols-4 lg:grid-cols-3">
             {technologies.map((tech) => (
               <span
                 key={tech}
@@ -105,7 +105,7 @@ export function Capabilities() {
               <div
                 key={cap.number}
                 data-reveal="capability-card"
-                className="surface-card flex flex-col gap-5 p-6"
+                className="surface-card flex flex-col gap-4 p-5 sm:gap-5 sm:p-6"
               >
                 <div className="flex items-start justify-between gap-3">
                   <span

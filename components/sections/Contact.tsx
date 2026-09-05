@@ -61,12 +61,12 @@ export function Contact() {
   );
 
   return (
-    <section ref={sectionRef} id="contact" className="relative section-padding pb-28 sm:pb-36">
+    <section ref={sectionRef} id="contact" className="relative section-padding pb-20 sm:pb-36">
       <BackgroundLines />
       <div className="container-page relative z-10">
         <p className="eyebrow mb-6">Get In Touch</p>
 
-        <div className="grid gap-16 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
           <div>
             <h2 className="flex flex-col text-[clamp(2.5rem,11vw,8.75rem)] font-extrabold uppercase leading-[0.92] tracking-tight">
               {HEADLINE_WORDS.map((word) => (
@@ -80,7 +80,7 @@ export function Contact() {
 
             <p
               data-reveal="contact-side"
-              className="mt-10 max-w-md text-lg font-bold sm:text-xl"
+              className="mt-8 max-w-md text-lg font-bold sm:text-xl"
             >
               Looking for the next problem worth solving?
             </p>
@@ -94,7 +94,7 @@ export function Contact() {
               experiences.
             </p>
 
-            <div data-reveal="contact-side" className="mt-9 flex flex-wrap gap-4">
+            <div data-reveal="contact-side" className="mt-7 flex flex-wrap gap-4">
               <a
                 href={site.resumeHref}
                 data-cursor-hover

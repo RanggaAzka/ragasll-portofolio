@@ -99,7 +99,7 @@ export function Hero() {
     <section
       ref={sectionRef}
       id="top"
-      className="relative flex min-h-[100svh] flex-col overflow-hidden"
+      className="relative flex h-[100svh] min-h-[560px] flex-col overflow-hidden"
     >
       <div
         ref={parallaxRef}
@@ -111,7 +111,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="container-page relative z-10 flex flex-1 flex-col pt-24 sm:pt-28">
+      <div className="container-page relative z-10 flex flex-1 flex-col pt-20 sm:pt-28">
         <div className="flex items-center justify-between">
           <span
             className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.16em]"
@@ -142,14 +142,14 @@ export function Hero() {
         <div className="relative mt-auto flex flex-1 items-end justify-center">
           <div
             ref={imageRef}
-            className="relative aspect-[3/4] w-[62vw] max-w-[280px] opacity-0 sm:max-w-[340px] lg:max-w-[400px]"
+            className="relative aspect-[3/4] w-[54vw] max-w-[280px] opacity-0 sm:w-[56vw] sm:max-w-[340px] lg:max-w-[400px]"
           >
             <SmartImage
               src={site.profileImage}
               alt={`Portrait of ${site.name}`}
               fill
               priority
-              sizes="(min-width: 1024px) 400px, (min-width: 640px) 340px, 62vw"
+              sizes="(min-width: 1024px) 400px, (min-width: 640px) 340px, 54vw"
               className="rounded-t-[2.5rem] object-cover object-top"
               containerClassName="rounded-t-[2.5rem]"
               fallbackLabel="Add profile.jpg"
@@ -157,7 +157,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center pb-6 pt-4 sm:pb-8">
+        <div className="flex items-center justify-center pb-5 pt-3 sm:pb-8">
           <span className="eyebrow">{site.role}</span>
         </div>
       </div>

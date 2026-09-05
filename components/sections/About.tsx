@@ -111,8 +111,8 @@ export function About() {
           <span className="typewriter-cursor" aria-hidden="true" />
         </h2>
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-16">
-          <div data-reveal="about-body" className="flex flex-col gap-8">
+        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-16">
+          <div data-reveal="about-body" className="flex flex-col gap-6 sm:gap-8">
             <div className="flex items-center gap-4">
               <div
                 className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border sm:h-20 sm:w-20"
@@ -154,7 +154,7 @@ export function About() {
               ))}
             </div>
 
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4 sm:gap-5">
               {currentlyList.map((item, i) => {
                 const Icon = CURRENT_ICONS[i % CURRENT_ICONS.length];
                 return (
@@ -177,7 +177,7 @@ export function About() {
             </div>
           </div>
 
-          <div data-reveal="about-body" className="flex flex-col justify-between gap-10">
+          <div data-reveal="about-body" className="flex flex-col justify-between gap-8 sm:gap-10">
             <div>
               <p
                 className="max-w-2xl text-sm leading-relaxed sm:text-base"
@@ -200,7 +200,7 @@ export function About() {
 
             <div
               ref={traitsWrapRef}
-              className="relative mx-auto h-64 w-full max-w-md sm:h-72 lg:mx-0 lg:h-80"
+              className="relative mx-auto h-60 w-full max-w-md sm:h-72 lg:mx-0 lg:h-80"
             >
               {traits.map((trait, i) => {
                 const layout = TRAIT_LAYOUT[i];

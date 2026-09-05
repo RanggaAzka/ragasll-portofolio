@@ -83,14 +83,14 @@ export function Certificates() {
           </p>
         </div>
 
-        <div className="mt-16 flex flex-col gap-16 sm:gap-20 lg:gap-24">
+        <div className="mt-10 flex flex-col gap-12 sm:mt-16 sm:gap-20 lg:gap-24">
           {certificates.map((certificate, i) => {
             const reversed = i % 2 === 1;
             return (
               <div
                 key={certificate.title}
                 data-reveal="certificate-row"
-                className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16"
+                className="grid items-center gap-6 lg:grid-cols-2 lg:gap-16"
               >
                 <div
                   data-certificate-image

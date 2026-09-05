@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4c6fff"/>
+      <stop offset="100%" stop-color="#7c5cff"/>
+    </linearGradient>
+    <linearGradient id="border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7d95ff"/>
+      <stop offset="100%" stop-color="#a68bff"/>
+    </linearGradient>
+  </defs>
+  <circle cx="200" cy="200" r="196" fill="url(#border)"/>
+  <circle cx="200" cy="200" r="186" fill="url(#bg)"/>
+  <text x="200" y="215" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="120" font-weight="700" fill="rgba(255,255,255,0.9)">RA</text>
+</svg>

@@ -6,10 +6,12 @@ import { gsap } from "@/lib/gsap";
 import { site } from "@/data/site";
 
 /**
- * A brief, skippable-by-nature loader. It always clears itself — the
- * overlay is pointer-transparent so it can never block interaction, and a
- * hard timeout guarantees it (and the body scroll lock) is removed even if
- * the decorative GSAP animation never completes.
+ * A brief, skippable-by-nature loader. It never touches body overflow and
+ * its overlay is pointer-transparent, so it can never block scrolling or
+ * interaction. The overlay also hides itself via a pure-CSS exit animation,
+ * so it clears on any device even if JavaScript fails entirely. A hard
+ * timeout guarantees the element is removed from the DOM regardless of the
+ * decorative GSAP animation.
  */
 const MAX_DURATION_MS = 2000;
 
@@ -18,14 +20,7 @@ export function PageLoader() {
   const rootRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
-
-  // Fail-safe: release the page no matter what happens to GSAP.
+  // Fail-safe: remove the loader from the DOM no matter what.
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setDone(true);
@@ -62,7 +57,7 @@ export function PageLoader() {
   return (
     <div
       ref={rootRef}
-      className="pointer-events-none fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6"
+      className="page-loader pointer-events-none fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6"
       style={{ background: "var(--background)" }}
       aria-hidden="true"
     >

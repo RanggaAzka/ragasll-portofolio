@@ -39,7 +39,12 @@ export function useSmoothScroll() {
 
 export function SmoothScrollProvider({ children }: { children: ReactNode }) {
   const reducedMotion = useReducedMotion();
-  const isTouch = useMediaQuery("(pointer: coarse)");
+  const coarsePointer = useMediaQuery("(pointer: coarse)");
+  const hoverNone = useMediaQuery("(hover: none)");
+  const isTouch =
+    coarsePointer ||
+    hoverNone ||
+    (typeof window !== "undefined" && navigator.maxTouchPoints > 0);
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {

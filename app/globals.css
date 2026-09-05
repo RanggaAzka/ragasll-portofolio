@@ -116,6 +116,19 @@ html.lenis body {
   pointer-events: none;
 }
 
+/* PageLoader overlay. The auto-exit is pure CSS so the overlay clears
+   itself on any device even if JavaScript never runs. */
+.page-loader {
+  animation: page-loader-exit 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.2s;
+}
+
+@keyframes page-loader-exit {
+  to {
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+}
+
 /* ────────────────────────────────────────────────────────────
    BASE
    ──────────────────────────────────────────────────────────── */
@@ -186,6 +199,9 @@ html.has-custom-cursor * {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+  .page-loader {
+    animation-delay: 0s;
   }
 }
 

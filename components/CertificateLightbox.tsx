@@ -14,32 +14,17 @@ type Props = {
 
 export function CertificateLightbox({ selectedIndex, certificates, onClose }: Props) {
   const [certIndex, setCertIndex] = useState(selectedIndex ?? 0);
-  const [imgIndex, setImgIndex] = useState(0);
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const imageWrapRef = useRef<HTMLDivElement>(null);
-
-  const touchStartX = useRef(0);
-  const touchStartY = useRef(0);
-  const mouseStartX = useRef(0);
-  const isDragging = useRef(false);
 
   const isOpen = selectedIndex !== null;
 
   const advanceCert = useCallback(
     (dir: 1 | -1) => {
       setCertIndex((prev) => (prev + dir + certificates.length) % certificates.length);
-      setImgIndex(0);
     },
     [certificates.length]
-  );
-
-  const advanceImage = useCallback(
-    (dir: 1 | -1) => {
-      const total = certificates[certIndex]?.images.length ?? 2;
-      setImgIndex((prev) => (prev + dir + total) % total);
-    },
-    [certIndex, certificates]
   );
 
   // Open / close animations + body scroll lock + keyboard
@@ -61,63 +46,17 @@ export function CertificateLightbox({ selectedIndex, certificates, onClose }: Pr
 
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
-      if (e.key === "ArrowLeft") advanceImage(-1);
-      if (e.key === "ArrowRight") advanceImage(1);
     }
     window.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [isOpen, onClose, advanceImage]);
-
-  // Animate image swap when imgIndex changes
-  const prevImgIndex = useRef(imgIndex);
-  useEffect(() => {
-    if (prevImgIndex.current !== imgIndex && imageWrapRef.current) {
-      gsap.fromTo(
-        imageWrapRef.current,
-        { opacity: 0.4, scale: 0.97 },
-        { opacity: 1, scale: 1, duration: 0.25, ease: "power2.out" }
-      );
-    }
-    prevImgIndex.current = imgIndex;
-  }, [imgIndex]);
-
-  // Touch swipe on image
-  function onTouchStart(e: React.TouchEvent) {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-  }
-  function onTouchEnd(e: React.TouchEvent) {
-    const dx = e.changedTouches[0].clientX - touchStartX.current;
-    const dy = e.changedTouches[0].clientY - touchStartY.current;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-      advanceImage(dx > 0 ? -1 : 1);
-    }
-  }
-
-  // Mouse drag on image
-  function onMouseDown(e: React.MouseEvent) {
-    isDragging.current = true;
-    mouseStartX.current = e.clientX;
-  }
-  function onMouseMove(e: React.MouseEvent) {
-    if (!isDragging.current) return;
-    const dx = e.clientX - mouseStartX.current;
-    if (Math.abs(dx) > 80) {
-      isDragging.current = false;
-      advanceImage(dx > 0 ? -1 : 1);
-    }
-  }
-  function onMouseUp() {
-    isDragging.current = false;
-  }
+  }, [isOpen, onClose]);
 
   if (!isOpen || selectedIndex === null) return null;
 
   const cert = certificates[certIndex];
-  const totalImages = cert.images.length;
 
   return (
     <div
@@ -173,17 +112,11 @@ export function CertificateLightbox({ selectedIndex, certificates, onClose }: Pr
         <div
           ref={imageWrapRef}
           className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl select-none"
-          style={{ cursor: "grab" }}
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
-          onMouseDown={onMouseDown}
-          onMouseMove={onMouseMove}
-          onMouseUp={onMouseUp}
-          onMouseLeave={onMouseUp}
+          style={{ cursor: "default" }}
         >
           <Image
-            src={cert.images[imgIndex]}
-            alt={`${cert.title} ${imgIndex === 0 ? "front" : "back"}`}
+            src={cert.images[0]}
+            alt={cert.title}
             fill
             sizes="(min-width: 1024px) 800px, 90vw"
             className="object-contain pointer-events-none"
@@ -193,23 +126,6 @@ export function CertificateLightbox({ selectedIndex, certificates, onClose }: Pr
 
 
         </div>
-
-        {/* Image dots */}
-        {totalImages > 1 && (
-          <div className="flex items-center gap-2">
-            {cert.images.map((_, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => setImgIndex(idx)}
-                aria-label={`View ${idx === 0 ? "front" : "back"}`}
-                className={`h-2 rounded-full transition-all duration-200 ${
-                  idx === imgIndex ? "w-6 bg-white" : "w-2 bg-white/30"
-                }`}
-              />
-            ))}
-          </div>
-        )}
 
         {/* Info */}
         <div className="text-center">
@@ -226,8 +142,6 @@ export function CertificateLightbox({ selectedIndex, certificates, onClose }: Pr
             className="mt-3 text-xs font-medium"
             style={{ color: "rgba(255,255,255,0.4)" }}
           >
-            {imgIndex + 1} / {totalImages}
-            <span className="mx-2">&middot;</span>
             {certIndex + 1} / {String(certificates.length).padStart(2, "0")}
           </p>
         </div>

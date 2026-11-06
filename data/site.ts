@@ -25,7 +25,7 @@ export const site = {
 
 export const stats = [
   { label: "Projects", value: "20+" },
-  { label: "Certificates", value: "9+" },
+  { label: "Certificates", value: "4+" },
   { label: "Years Learning", value: "3+" },
 ] as const;
 

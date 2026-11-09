@@ -97,6 +97,7 @@ export function Contact() {
             <div data-reveal="contact-side" className="mt-7 flex flex-wrap gap-4">
               <a
                 href={site.resumeHref}
+                download="Rangga-Azka-Resume.pdf"
                 data-cursor-hover
                 className="btn-pill btn-pill-solid"
               >

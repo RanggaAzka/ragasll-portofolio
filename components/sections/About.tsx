@@ -189,6 +189,7 @@ export function About() {
                 Want to know more about my experience?{" "}
                 <a
                   href={site.resumeHref}
+                  download="Rangga-Azka-Resume.pdf"
                   data-cursor-hover
                   className="link-underline font-semibold"
                 >

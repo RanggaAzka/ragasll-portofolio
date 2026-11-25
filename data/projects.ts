@@ -40,7 +40,7 @@ export const projects: Project[] = [
     technology: ["React", "Next.js", "Tailwind CSS"],
     image: "/images/projects/only-cars.png",
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/RanggaAzka/Only-Cars",
   },
   {
     number: "04",
@@ -49,6 +49,6 @@ export const projects: Project[] = [
     technology: ["Laravel", "MySQL"],
     image: "/images/projects/xpro-travel.png",
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/RanggaAzka/Xpro-Travel-Page",
   },
 ];
